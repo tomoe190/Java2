@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--骨架-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    2、引入CSS样式文件-->
+    <link type="text/css" rel="stylesheet" href="../css/1.css">
+<!--    3、在 html 文件 head 标签中使用 style 标签-->
+<!--      作用在所有 h1 和 strong 标签上-->
+<!--    <style>-->
+<!--        h1{-->
+<!--            color:red;-->
+<!--        }-->
+<!--        strong{-->
+<!--            color:yellow;-->
+<!--        }-->
+<!--      作用在指定标签上-->
+<!--        #xxx{-->
+<!--            color:green;-->
+<!--        }-->
+<!--    </style>-->
+    <script>
+<!--        加载时就开始执行-->
+        // alert(2);
+        var articles = [{
+            title:"我的第一篇博客",
+            content:"学习html"
+        }, {
+            title:"我的第二篇博客",
+            content: "学习 JS"
+        }];
+        console.log(articles[0]);
+        console.log(JSON.stringify(articles))
+    </script>
+<!--    <script type="application/javascript" src="js/1.js"></script>-->
+</head>
+<!--body 加载时执行-->
+<body onload="alert('ok')">
+
+    <img src="../image/下载%20(1).jpg">
+<!--    1、作用在一个标签-->
+    <p style="color:olivedrab">1111111</p>
+    <p>2222222</p>
+    <h1>大标题</h1>
+    <strong>第一句话</strong>
+    <strong>第二句话</strong>
+    <strong>第三句话</strong>
+    <strong>第四句话</strong>
+    <ul>
+        <li id="xxx">豆浆</li>
+        <li>油条</li>
+        <li>豆腐脑</li>
+        <li>米汤</li>
+    </ul>
+    <ol><li>沿着条路走到头</li>
+        <li>右转</li>
+        <li>直行穿过第一个十字路口</li>
+        <li>在第三个十字路口处左转</li>
+        <li>继续走 300 米，学校就在你的右手边</li>
+    </ol>
+    <a href="http://www.baidu.com">百度</a>
+</body>
+</html>
