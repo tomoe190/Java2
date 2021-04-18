@@ -42,8 +42,6 @@ public class HelloServlet  extends HttpServlet {
         PrintWriter out = resp.getWriter();
         out.println("<h1>welcome！" + name + "</h1>");
     }
-
-
-
+    
 
 }
