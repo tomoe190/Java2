@@ -14,7 +14,7 @@ import java.io.PrintWriter;
  * 步骤：
  * 1、使用 @WebServlet(/服务路径)
  * 2、继承 HttpServlet
- * 3、重写doXXX方法
+ * 3、重写doXXX方法：表示提供 XXX的服务方法
  *
  * 重写的方法，都包含两个对象：
  * 一般是通过 request 获取http请求的部分信息
