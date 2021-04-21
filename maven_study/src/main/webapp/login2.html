@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+</head>
+<body>
+    <h2>用户登录</h2>
+    <div>
+
+    </div>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                username:"",
+                password:"",
+            },
+            methods:{
+                login:function() {
+                    let vm = this;
+                    
+                    // 默认发送一个请求，ContentType 为 application
+                    // 请求数据为 json 字符串（body）
+                    axios.post("login2",{
+                        username:vm.username,   //  请求数据，post提交
+                        password:vm.password,
+                    }).then(function (resp){
+                        // console.log(resp)
+                        // 获取相应体
+                        let json = resp.data;
+                        if (json.ok) {
+                            // 响应body 业务操作成功，页面跳转
+                            window.location.href="home.html";
+                        } else {
+                            // 业务跳转失败，显示错误信息
+                            alert("错误码：" + json.code+"\n错误信息：" +json.msg);
+                        }
+                    }).catch(function (err){
+                        console.error(err) // 打印对象
+                        console.error(JSON.stringify(err))
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>
