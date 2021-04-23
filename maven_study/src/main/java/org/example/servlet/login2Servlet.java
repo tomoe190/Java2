@@ -25,14 +25,14 @@ public class login2Servlet extends HttpServlet {
 
         /**
          * 1、解析请求数据
-         * （1)request.getParametor("键") 获取值
+         * （1)request.getParameter("键") 获取值
          *     queryString body 格式和 queryString 一样
          * （2）请求头 ContentType 为 application/json
          *     此时请求体为json 字符串
-         *     request。getInputString()获取输入流
+         *     request.getInputString()获取输入流
          *     通过输入流来获取body的数据
           */
-        // 目前是json字符串作为请求内容,需要反序列化Java对象
+        // 目前是json字符串作为请求体内容,需要反序列化Java对象
         ObjectMapper mapper = new ObjectMapper();
         // 通过  获取输入流（包含body数据）
         InputStream is = req.getInputStream();
