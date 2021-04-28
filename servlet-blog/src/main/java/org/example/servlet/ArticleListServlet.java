@@ -25,6 +25,7 @@ public class ArticleListServlet extends HttpServlet {
         resp.setContentType("application/json");
 
         JSONResponse json = new JSONResponse();
+        
         try{
             // 业务：查询文章列表（简化版本：查询所有文章）
             //      数据库查询当前用户关联的文章数据，然后返回
