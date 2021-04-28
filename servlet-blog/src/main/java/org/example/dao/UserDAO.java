@@ -41,5 +41,4 @@ public class UserDAO {
             DBUtil.close(c,ps,rs);
         }
     }
-
 }
