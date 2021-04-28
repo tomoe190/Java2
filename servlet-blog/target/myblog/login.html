@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+</head>
+<body>
+    <h2>用户登录</h2>
+
+    <div id="app">
+        用户名：<input type="text" v-model="username">
+        <br><br>
+        密码：<input type="passeord" v-model="password">
+        <br><br>
+        <button v-on:click="login()">登录</button>
+        <p style="color:red" v-if="msg">{{msg}}</p>
+    </div>
+
+    <!-- 生产环境版本，优化了尺寸和速度 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                username:"",
+                password:"",
+                message:false
+            },
+            methods:{
+                login:function() {
+                    let vm = this;
+                    this.message = false;
+                    // 默认发送一个请求，ContentType 为 application
+                    // 请求数据为 json 字符串（body）
+                    axios.post("login",{
+                        username:vm.username,   //  请求数据，post提交
+                        password:vm.password,
+                    }).then(function (resp){//200状态码时执行
+                        // console.log(resp)
+                        // 获取相应体
+                        let json = resp.data;
+                        if (json.success) {
+                            // 响应body 业务操作成功，页面跳转
+                            window.location.href="jsp/articleList.jsp";
+                        } else {
+                            // 业务跳转失败，显示错误信息
+                            // alert("错误码：" + json.code+"\n错误信息：" +json.msg);
+                            vm.message = json.message;
+                        }
+                    }).catch(function (err){
+                        console.error(err) // 打印对象
+                        console.error(JSON.stringify(err))
+                    })
+                }
+
+            }
+        })
+    </script>
+</body>
+</html>
