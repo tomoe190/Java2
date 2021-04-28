@@ -3,21 +3,18 @@ package org.example.dao;
 import org.example.model.User;
 import org.example.util.DBUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.Date;
 
-public class UserDao {
+public class UserDAO {
 
-    public static User query(User user) {
+    public static User query(User user) throws SQLException {
         Connection c = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try{
             c = DBUtil.getConnection();
-            String sql = "select id,nickname,sex,birthday,head" +
+            String sql = "select id,nickname,sex,birthday," +
                     "head from user where username=? and password=?";
             ps = c.prepareStatement(sql);
             ps.setString(1,user.getUsername());
@@ -39,9 +36,10 @@ public class UserDao {
             return query;
         } catch(Exception e) {
             e.printStackTrace();
-
+            return null;
         } finally {
             DBUtil.close(c,ps,rs);
         }
     }
+
 }

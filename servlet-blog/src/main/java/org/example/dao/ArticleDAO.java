@@ -19,7 +19,7 @@ public class ArticleDAO {
 
         // 2、根据连接，创建操作命令 statement
         String sql = "select id,title from article where user_id=?";
-        PreparedStatement ps = c.prepareStatement(sql);
+        PreparedStatement ps = c.prepareStatement(sql);//预编译
         // 替换占位符的值，第一个参数表示占位符的索引（1开始），第二个参数是要替换的值
         ps.setInt(1,userId);
 
@@ -40,7 +40,6 @@ public class ArticleDAO {
         }
 
         // 5、释放资源 TODO 存在问题：之前代码抛异常就无法执行close代码
-
         DBUtil.close(c, ps, rs);
 
         return query;

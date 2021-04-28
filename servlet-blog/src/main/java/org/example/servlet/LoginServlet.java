@@ -1,6 +1,6 @@
 package org.example.servlet;
 
-import org.example.dao.UserDao;
+import org.example.dao.UserDAO;
 import org.example.model.JSONResponse;
 import org.example.model.User;
 import org.example.util.JSONUtil;
@@ -17,20 +17,21 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
 
         JSONResponse json = new JSONResponse();
         try{
+            // 获取请求数据
             User user = JSONUtil.deserialize(req.getInputStream(),User.class);
             // 处理业务，根据输入的账号密码，查询是否有数据
-            User query = UserDao.query(user);
+            User query = UserDAO.query(user);
 
             // 业务处理成功，返回 success true 和业务数据
             if (query == null) {
-                json.setCode("001");
+                json.setCode("LOG001");
                 json.setMessage("用户名或密码错误");
             } else { // 校验用户名密码成功
                 json.setSuccess(true);

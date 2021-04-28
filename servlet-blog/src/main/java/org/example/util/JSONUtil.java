@@ -23,6 +23,6 @@ public class JSONUtil {
      * 反序列化输入流中的json字符串为Java对象
      */
     public static <T> T deserialize(InputStream is, Class<T> c) throws IOException {
-        return m.readValue(is,c);
+        return m. readValue(is,c);
     }
 }
