@@ -28,6 +28,8 @@ public class UserDAO {
                 query.setPassword(user.getPassword());
                 query.setNickname(rs.getString("nickname"));
                 query.setSex(rs.getBoolean("sex"));
+                // 格林威治时间，得到的是一个Timestamp 类型的数据
+                // 由于从结果集获取数据可能为空，所以要进行一个非空的判断
                 Timestamp t = rs.getTimestamp("birthday");
                 if (t != null)
                     query.setBirthday(new Date(t.getTime()));
