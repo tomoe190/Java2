@@ -30,7 +30,6 @@ public class ArticleListServlet extends HttpServlet {
             // 业务：查询文章列表（简化版本：查询所有文章）
             //      数据库查询当前用户关联的文章数据，然后返回
             //  需要只查询当前用户的文章
-            //
             HttpSession session = req.getSession(false);
             User user = (User) session.getAttribute("user");
 
