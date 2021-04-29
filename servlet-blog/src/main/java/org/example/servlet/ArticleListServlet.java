@@ -23,6 +23,7 @@ public class ArticleListServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
+        
         JSONResponse json = new JSONResponse();
 
         try{
