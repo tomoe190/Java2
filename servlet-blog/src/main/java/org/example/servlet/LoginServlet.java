@@ -23,6 +23,7 @@ public class LoginServlet extends HttpServlet {
         resp.setContentType("application/json");
 
         JSONResponse json = new JSONResponse();
+
         try{
             // 获取请求数据
             User user = JSONUtil.deserialize(req.getInputStream(),User.class);

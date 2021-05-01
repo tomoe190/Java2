@@ -40,7 +40,7 @@ public class ArticleListServlet extends HttpServlet {
             json.setData(query);
         } catch (Exception e) {
             e.printStackTrace(); 
-            // 业务处理失败，返回 false 错误码 + 错误信息
+            // 业务处理失败，返回错误码 + 错误信息
             //TODO  简单返回错误
             json.setCode("ERR");
             json.setMessage("系统出错了，请联系管理员");

@@ -32,7 +32,7 @@ public class UserDAO {
                 // 由于从结果集获取数据可能为空，所以要进行一个非空的判断
                 Timestamp t = rs.getTimestamp("birthday");
                 if (t != null)
-                    query.setBirthday(new Date(t.getTime()));
+                    query.setBirthday(new Date(t.getTime()));// 转换
                 query.setHead(rs.getString("head"));
             }
             return query;
