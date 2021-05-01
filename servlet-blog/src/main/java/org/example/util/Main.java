@@ -63,7 +63,6 @@ public class Main {
             super(message);
             this.code = code;
         }
-
         public MyException(String code, String message, Throwable cause) {
             super(message, cause);
             this.code = code;
