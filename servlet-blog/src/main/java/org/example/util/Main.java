@@ -8,6 +8,7 @@ import org.example.model.User;
 public class Main {
     // 模拟前端获取响应数据
     public static void main(String[] args) {
+        
 //        System.out.println(doGet("abc"));
         System.out.println(doGet("1"));
     }
@@ -25,7 +26,6 @@ public class Main {
             } catch (NumberFormatException e) {
                 e.printStackTrace();
                 throw new MyException("my-error-400","请求id类型错误");
-
             }
         } catch (Exception e) {
             e.printStackTrace();
