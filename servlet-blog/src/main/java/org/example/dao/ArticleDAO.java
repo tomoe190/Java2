@@ -64,7 +64,6 @@ public class ArticleDAO {
             String sql = "insert into article(title,content,user_id) values(?,?,?)";
             ps = c.prepareStatement(sql);
 
-
             // 3、先替换占位符的值，再执行sql
             ps.setString(1,a.getTitle());
             ps.setString(2,a.getContent());
