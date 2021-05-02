@@ -60,9 +60,11 @@ public class ArticleDAO {
         try {
             // 1、获取数据库连接
             c = DBUtil.getConnection();
+
             // 2、根据Connection+sql创建 操作命令对象
             String sql = "insert into article(title,content,user_id) values(?,?,?)";
             ps = c.prepareStatement(sql);
+            
             // 3、先替换占位符的值，再执行sql
             ps.setString(1,a.getTitle());
             ps.setString(2,a.getContent());
