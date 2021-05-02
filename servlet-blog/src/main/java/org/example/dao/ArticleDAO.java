@@ -53,4 +53,29 @@ public class ArticleDAO {
 //        System.out.println(res);
         query(1);
     }
+
+    public static int insert(Article a,Integer userId) throws SQLException {
+        Connection c = null;
+        PreparedStatement ps = null;
+        try {
+            // 1、获取数据库连接
+            c = DBUtil.getConnection();
+            // 2、根据Connection+sql创建 操作命令对象
+            String sql = "insert into article(title,content,user_id) values(?,?,?)";
+            ps = c.prepareStatement(sql);
+
+
+            // 3、先替换占位符的值，再执行sql
+            ps.setString(1,a.getTitle());
+            ps.setString(2,a.getContent());
+            ps.setInt(3,userId);
+            // 插入、修改、删除都是调用executeUpdate的方法
+            // 返回值都是int
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(c,ps);
+        }
+    }
 }

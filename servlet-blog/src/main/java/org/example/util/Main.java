@@ -8,7 +8,7 @@ import org.example.model.User;
 public class Main {
     // 模拟前端获取响应数据
     public static void main(String[] args) {
-        
+
 //        System.out.println(doGet("abc"));
         System.out.println(doGet("1"));
     }

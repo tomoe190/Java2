@@ -20,8 +20,15 @@ public class DBUtil {
     }
 
     public static void close(Connection c, PreparedStatement ps, ResultSet rs) throws SQLException {
-        rs.close();
-        ps.close();
-        c.close();
+        if(rs != null)
+            rs.close();
+        if(ps != null)
+            ps.close();
+        if(c != null)
+            c.close();
+    }
+
+    public static void close(Connection c, PreparedStatement ps) throws SQLException {
+        close(c,ps,null);
     }
 }
