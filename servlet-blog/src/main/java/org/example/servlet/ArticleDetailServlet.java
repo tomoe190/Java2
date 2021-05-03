@@ -15,5 +15,6 @@ public class ArticleDetailServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("");
+        
     }
 }
