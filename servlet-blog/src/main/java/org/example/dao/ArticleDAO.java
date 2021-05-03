@@ -71,9 +71,11 @@ public class ArticleDAO {
             ps.setInt(3,userId);
             // 插入、修改、删除都是调用executeUpdate的方法
             // 返回值都是int
+            return ps.executeUpdate();
+            
 
-        } catch (Exception e) {
-            e.printStackTrace();
+//        } catch (Exception e) {
+//            e.printStackTrace();
         } finally {
             DBUtil.close(c,ps);
         }

@@ -3,6 +3,7 @@ package org.example.servlet;
 import org.example.dao.ArticleDAO;
 import org.example.model.Article;
 import org.example.model.JSONResponse;
+import org.example.model.User;
 import org.example.util.JSONUtil;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/articleAdd")
@@ -28,8 +30,10 @@ public class ArticleAddServlet extends HttpServlet {
             Article a = JSONUtil.deserialize(
                     req.getInputStream(),Article.class
             );
+            HttpSession session = req.getSession(false);
+            User user = (User) session.getAttribute("user");
             // 2、业务处理
-            int n = ArticleDAO.insert(a);
+            int n = ArticleDAO.insert(a,user.getId());
 
             json.setSuccess(true);
             // 处理成功，可以设置业务数据（业务数据一般是数据库查出来的）
