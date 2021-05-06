@@ -81,4 +81,49 @@ public class ArticleDAO {
         }
         
     }
+
+    public static Article queryById(int id) throws SQLException {
+        Connection c = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try{
+            // 1、连接数据库
+            c = DBUtil.getConnection();
+            // 2、创建操作命令对象
+            String sql = "select * from article where id=?";
+            ps = c.prepareStatement(sql);
+            // 3、
+            ps.setInt(1,id);
+            rs = ps.executeQuery();
+            // 4、处理结果集
+            Article a = null;
+            while (rs.next()){
+                a = new Article();
+                a.setId(id);
+                a.setTitle(rs.getString("title"));
+                a.setContent(rs.getString("content"));
+            }
+            return a;
+        } finally {
+            DBUtil.close(c,ps,rs);
+        }
+    }
+
+    public static int update(Article a) throws SQLException {
+        Connection c = null;
+        PreparedStatement ps = null;
+        try {
+            c = DBUtil.getConnection();
+            String sql = "update article set title=?,content=? where id=?";
+            ps = c.prepareStatement(sql);
+
+            ps.setString(1,a.getTitle());
+            ps.setString(2,a.getContent());
+            ps.setInt(3,a.getId());
+
+            return ps.executeUpdate();
+        } finally {
+            DBUtil.close(c,ps);
+        }
+    }
 }
