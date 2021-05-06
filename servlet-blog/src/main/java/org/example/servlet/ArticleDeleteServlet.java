@@ -35,6 +35,7 @@ public class ArticleDeleteServlet extends HttpServlet {
             json.setCode("ERROR");
             json.setMessage("文章删除出错");
         }
+        
         String s = JSONUtil.serialize(json);
         resp.getWriter().println(s);
 
