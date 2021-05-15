@@ -28,7 +28,6 @@ public class ArticleDeleteServlet extends HttpServlet {
                     req.getInputStream(),Article.class
             );
             // 2、业务处理：
-
             json.setSuccess(true);
         } catch (IOException e) {
             e.printStackTrace();
